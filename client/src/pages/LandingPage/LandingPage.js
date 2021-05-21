@@ -1,8 +1,9 @@
 import React from 'react';
 import { useState, useEffect, } from 'react';
+import {  Link } from 'react-router-dom';
+
 import axios from 'axios';
 import './LandingPage.css';
-
 
 function LandingPage() {
     const [data, setData] = useState([]);
@@ -19,17 +20,17 @@ function LandingPage() {
         <React.Fragment>
             <div class="lp-wrapper">
                 <nav class="lp-nav">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" to='/'>
                         <span class="sr-only">Pickup</span>
                     </a>
-                    <ul>
+                        <ul>
                             <li>
-                                <a class="nav-link" href="#">Signin</a>
+                            <Link to={`/login`}>Sign in</Link>
                             </li>
                             <li>
-                                <a class="nav-link" href="#">Signup</a>
+                                <Link to={`/register`} >Sign up</Link>
                             </li>
-                    </ul>
+                        </ul>
                 </nav>
                 <div class="lp-content">
                     <div class="container">
@@ -38,7 +39,7 @@ function LandingPage() {
                         <a class="overviewbbtn" href="#">Welcome Go!</a>
                     </div>
                 </div>
-                </div>
+            </div>
         </React.Fragment>
     );
 }

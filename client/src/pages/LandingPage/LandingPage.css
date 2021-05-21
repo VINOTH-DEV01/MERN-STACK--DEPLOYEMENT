@@ -1,6 +1,3 @@
-body {
-    font-family: 'Roboto', sans-serif;
-}
 .lp-wrapper {
     background-position: center;
     margin-bottom: 0;
@@ -17,9 +14,6 @@ nav.lp-nav {
     position: relative;
     z-index: 999999;
 }
-
-
-
 .lp-content h1 {
     font-size: 72px;
     font-weight: initial;
