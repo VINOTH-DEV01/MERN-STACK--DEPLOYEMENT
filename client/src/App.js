@@ -25,6 +25,7 @@ function App() {
     return (
         <div className="hellocomponenet">
             <div className="listofproducts">
+              <p> Data! </p>
                 {data.map((item, index) => {
                     return (
                         <div className="lp">
