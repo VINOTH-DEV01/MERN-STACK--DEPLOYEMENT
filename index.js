@@ -8,10 +8,15 @@ if(process.env.NODE_ENV === 'production') {
         res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
 }
-const port = process.env.port || 8000;  
-const server = http.createServer(app);
-server.listen(port, () => {
-    console.log("sever started!");
-});
+// const port = process.env.port || 8000;  
+// const server = http.createServer(app);
+// server.listen(port, () => {
+//     console.log("sever started!");
+// });
 
      
+var port = process.env.PORT || 5000;
+const server = http.createServer(app);
+server.listen(port, "0.0.0.0", function() {
+console.log("Listening on Port 5000");
+});    
