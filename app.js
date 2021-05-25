@@ -4,6 +4,9 @@ const mongodb = require('mongodb');
 
 // const morgan = require('morgan');
 
+const mongoose = require("mongoose");
+mongoose.connect("mongodb+srv://shopapi:shopapi@cluster0.genkf.mongodb.net/ProductDb?retryWrites=true&w=majority",
+    { useNewUrlParser: true, useUnifiedTopology: true });
 
 //  Body parser  req getting  // 
 app.use(express.json());
@@ -14,13 +17,12 @@ app.use(express.urlencoded({
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 
-const homeRoute = require('./home');
+const homeRoute = require('./packages/backend/api/routes/home');
+const registerRoute = require('./packages/backend/api/routes/register');
 
 
 app.use('/', homeRoute);
-// app.get('/', logStuff, function (req, res, next) {
-//   res.send('User Info')
-// })
+app.use('/register', registerRoute);
 
 
 

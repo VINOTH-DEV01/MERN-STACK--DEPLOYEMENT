@@ -20,6 +20,57 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Register() {
+
+    const [fname, setFname] = useState('');
+    const [lname, setLname] = useState('');
+    const [email, setEmail] = useState('');
+    const [mobilenumber, setMobilenumber] = useState('');
+    const [location, setLocation] = useState('');
+    const [typeofaccount, setTypeofaccount] = useState('');
+    const [tech, setTech] = useState('');
+    const [descr, setDescr] = useState('');
+    const [password, setPassword] = useState('');
+    const [cpassword, setCpassword] = useState('');
+    const [data, setData] = useState('');
+
+    // useEffect(() => {
+    //     axios.post('/register', {
+    //         body: {
+    //             fname: fname,
+    //             lname: lname,
+    //             email: email,
+    //             mobilenumber: mobilenumber,
+    //             location: location,
+    //             typeofaccount: typeofaccount,
+    //             technologies: tech,
+    //             descr: descr,
+    //             password: password,
+    //             cpassword: cpassword
+    //         }
+    //     }).then((res) => {
+    //         console.log(res);
+    //         setData(res.data.productList);
+    //     });
+    // });
+    const createUser = () => {
+        axios.post('/register', {
+            body: {
+                fname: fname,
+                lname: lname,
+                email: email,
+                mobilenumber: mobilenumber,
+                location: location,
+                typeofaccount: typeofaccount,
+                technologies: tech,
+                descr: descr,
+                password: password,
+                cpassword: cpassword
+            }
+        }).then((res) => {
+            console.log(res);
+            setData(res.data.productList);
+        });
+    }
     return (
         <React.Fragment>
             <div className="reg-pg">
@@ -34,6 +85,7 @@ function Register() {
                         shrink: true,
                     }}
                     variant="outlined"
+                    value={fname}
                 />
                 <TextField
                     id="outlined-full-width"
@@ -71,7 +123,19 @@ function Register() {
                     }}
                     variant="outlined"
                 />
-                <Button variant="contained" color="primary">
+                <TextField
+                    id="outlined-full-width"
+                    label="Mobile Number"
+                    style={{ margin: 8 }}
+                    placeholder="Type Here"
+                    fullWidth
+                    margin="normal"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    variant="outlined"
+                />
+                <Button variant="contained" color="primary" onClick={createUser}>
                     Register
                 </Button> &nbsp;
 
