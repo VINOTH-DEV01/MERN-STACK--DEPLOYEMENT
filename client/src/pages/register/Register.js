@@ -33,6 +33,36 @@ function Register() {
     const [cpassword, setCpassword] = useState('');
     const [data, setData] = useState('');
 
+    const fnameHandler = (e) => {
+        setFname(e.currentTarget.value);
+    }
+    const lnameHandler = (e) => {
+        setLname(e.currentTarget.value);
+    }
+    const emailHandler = (e) => {
+        setEmail(e.currentTarget.value);
+    }
+    const mbHandler = (e) => {
+        setMobilenumber(e.currentTarget.value);
+    }
+    const locHandler = (e) => {
+        setLocation(e.currentTarget.value);
+    }
+    const taHandler = (e) => {
+        setTypeofaccount(e.currentTarget.value);
+    }
+    const techHandler = (e) => {
+        setTech(e.currentTarget.value);
+    }
+    const descrHandler = (e) => {
+        setDescr(e.currentTarget.value);
+    }
+    const passHandler = (e) => {
+        setPassword(e.currentTarget.value);
+    }
+    const cpassHandler = (e) => {
+        setCpassword(e.currentTarget.value);
+    }
     // useEffect(() => {
     //     axios.post('/register', {
     //         body: {
@@ -53,20 +83,19 @@ function Register() {
     //     });
     // });
     const createUser = () => {
-        axios.post('/register', {
-            body: {
-                fname: fname,
-                lname: lname,
-                email: email,
-                mobilenumber: mobilenumber,
-                location: location,
-                typeofaccount: typeofaccount,
-                technologies: tech,
-                descr: descr,
-                password: password,
-                cpassword: cpassword
-            }
-        }).then((res) => {
+        const payLoad = {
+            fname: fname,
+            lname: lname,
+            email: email,
+            mobilenumber: mobilenumber,
+            location: location,
+            typeofaccount: typeofaccount,
+            technologies: tech,
+            descr: descr,
+            password: password,
+            cpassword: cpassword,
+        }
+        axios.post('/register', payLoad).then((res) => {
             console.log(res);
             setData(res.data.productList);
         });
@@ -86,6 +115,7 @@ function Register() {
                     }}
                     variant="outlined"
                     value={fname}
+                    onChange={fnameHandler}
                 />
                 <TextField
                     id="outlined-full-width"
@@ -98,10 +128,11 @@ function Register() {
                         shrink: true,
                     }}
                     variant="outlined"
+                    onChange={lnameHandler}
                 />
                 <TextField
                     id="outlined-full-width"
-                    label="Email Id"
+                    label="Email"
                     style={{ margin: 8 }}
                     placeholder="Type Here"
                     fullWidth
@@ -110,18 +141,7 @@ function Register() {
                         shrink: true,
                     }}
                     variant="outlined"
-                />
-                <TextField
-                    id="outlined-full-width"
-                    label="Mobile Number"
-                    style={{ margin: 8 }}
-                    placeholder="Type Here"
-                    fullWidth
-                    margin="normal"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    variant="outlined"
+                    onChange={emailHandler}
                 />
                 <TextField
                     id="outlined-full-width"
@@ -134,11 +154,95 @@ function Register() {
                         shrink: true,
                     }}
                     variant="outlined"
+                    onChange={mbHandler}
                 />
-                <Button variant="contained" color="primary" onClick={createUser}>
-                    Register
-                </Button> &nbsp;
+                <TextField
+                    id="outlined-full-width"
+                    label="Location"
+                    style={{ margin: 8 }}
+                    placeholder="Type Here"
+                    fullWidth
+                    margin="normal"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    variant="outlined"
+                    onChange={locHandler}
+                />
 
+                <TextField
+                    id="outlined-full-width"
+                    label="Type of account"
+                    style={{ margin: 8 }}
+                    placeholder="Type Here"
+                    fullWidth
+                    margin="normal"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    variant="outlined"
+                    onChange={taHandler}
+                />
+                <TextField
+                    id="outlined-full-width"
+                    label="Technologies"
+                    style={{ margin: 8 }}
+                    placeholder="Type Here"
+                    fullWidth
+                    margin="normal"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    variant="outlined"
+                    onChange={techHandler}
+                />
+                <TextField
+                    id="outlined-full-width"
+                    label="Descr"
+                    style={{ margin: 8 }}
+                    placeholder="Type Here"
+                    fullWidth
+                    margin="normal"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    variant="outlined"
+                    onChange={descrHandler}
+                />
+                <TextField
+                    id="outlined-full-width"
+                    label="Password"
+                    style={{ margin: 8 }}
+                    placeholder="Type Here"
+                    fullWidth
+                    margin="normal"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    variant="outlined"
+                    onChange={passHandler}
+                />
+                <TextField
+                    id="outlined-full-width"
+                    label="Confirm Password"
+                    style={{ margin: 8 }}
+                    placeholder="Type Here"
+                    fullWidth
+                    margin="normal"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    variant="outlined"
+                    onChange={cpassHandler}
+                />
+
+                <Link to={'/login'} >
+                    <Button variant="contained" color="primary"
+                        // disabled
+                        onClick={createUser}>
+                        Register
+                     </Button> &nbsp;
+                </Link>
                 <Link to={'/login'} >
                     <Button variant="contained" color="primary">
                         Login

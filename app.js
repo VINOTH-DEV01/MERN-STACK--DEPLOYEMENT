@@ -19,10 +19,15 @@ app.set("view engine", "ejs");
 
 const homeRoute = require('./packages/backend/api/routes/home');
 const registerRoute = require('./packages/backend/api/routes/register');
+const loginuserRoute = require('./packages/backend/api/routes/login');
+const mentorslist = require('./packages/backend/api/routes/mentorslist');
 
 
 app.use('/', homeRoute);
 app.use('/register', registerRoute);
+app.use('/user', loginuserRoute);
+app.use('/mentors', mentorslist);
+
 
 
 

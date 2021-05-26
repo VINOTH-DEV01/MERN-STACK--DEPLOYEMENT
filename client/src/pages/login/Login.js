@@ -18,8 +18,27 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Login() {
-    const classes = useStyles();
+    const [uname, setUname] = useState('');
+    const [pass, setPass] = useState('');
 
+    
+    const classes = useStyles();
+    const loginUser = () => {
+        const payLoad = {
+            fname: uname,
+            password: pass,
+        }
+        axios.get('/user/learnerLogin', payLoad).then((res) => {
+            console.log(res);
+            window.location.href='/mentorslist';
+        });
+    }
+    const unameHandler = (e) => {
+        setUname(e.currentTarget.value);
+    }
+    const passHandler = (e) => {
+        setPass(e.currentTarget.value);
+    }
     return (
         <React.Fragment>
             <div className="login-pg">
@@ -34,10 +53,11 @@ function Login() {
                         shrink: true,
                     }}
                     variant="outlined"
+                    onChange={unameHandler}
                 />
                 <TextField
                     id="outlined-full-width"
-                    label="Last Name"
+                    label="Password"
                     style={{ margin: 8 }}
                     placeholder="Type Here"
                     fullWidth
@@ -47,9 +67,12 @@ function Login() {
                     }}
                     type="password"
                     variant="outlined"
+                    onChange={passHandler}
                 />
 
-                <Button variant="contained" color="primary">
+                <Button variant="contained" color="primary" 
+                onClick={loginUser} 
+                >
                     Login
                 </Button>  &nbsp;
                 <Link to={'/register'} >
