@@ -84,20 +84,13 @@ function Register() {
     // });
     const createUser = () => {
         const payLoad = {
-            fname: fname,
-            lname: lname,
-            email: email,
-            mobilenumber: mobilenumber,
-            location: location,
-            typeofaccount: typeofaccount,
-            technologies: tech,
-            descr: descr,
-            password: password,
-            cpassword: cpassword,
+            name: fname,
+            loc: lname,
         }
-        axios.post('/register', payLoad).then((res) => {
+        axios.post('http://localhost:3002/employee', payLoad).then((res) => {
             console.log(res);
             setData(res.data.productList);
+            window.location.href="http://localhost:3000/mentorslist";
         });
     }
     return (
@@ -105,7 +98,7 @@ function Register() {
             <div className="reg-pg">
                 <TextField
                     id="outlined-full-width"
-                    label="First Name"
+                    label="Name"
                     style={{ margin: 8 }}
                     placeholder="Type Here"
                     fullWidth
@@ -119,7 +112,7 @@ function Register() {
                 />
                 <TextField
                     id="outlined-full-width"
-                    label="Last Name"
+                    label="Location"
                     style={{ margin: 8 }}
                     placeholder="Type Here"
                     fullWidth
@@ -130,111 +123,7 @@ function Register() {
                     variant="outlined"
                     onChange={lnameHandler}
                 />
-                <TextField
-                    id="outlined-full-width"
-                    label="Email"
-                    style={{ margin: 8 }}
-                    placeholder="Type Here"
-                    fullWidth
-                    margin="normal"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    variant="outlined"
-                    onChange={emailHandler}
-                />
-                <TextField
-                    id="outlined-full-width"
-                    label="Mobile Number"
-                    style={{ margin: 8 }}
-                    placeholder="Type Here"
-                    fullWidth
-                    margin="normal"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    variant="outlined"
-                    onChange={mbHandler}
-                />
-                <TextField
-                    id="outlined-full-width"
-                    label="Location"
-                    style={{ margin: 8 }}
-                    placeholder="Type Here"
-                    fullWidth
-                    margin="normal"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    variant="outlined"
-                    onChange={locHandler}
-                />
-
-                <TextField
-                    id="outlined-full-width"
-                    label="Type of account"
-                    style={{ margin: 8 }}
-                    placeholder="Type Here"
-                    fullWidth
-                    margin="normal"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    variant="outlined"
-                    onChange={taHandler}
-                />
-                <TextField
-                    id="outlined-full-width"
-                    label="Technologies"
-                    style={{ margin: 8 }}
-                    placeholder="Type Here"
-                    fullWidth
-                    margin="normal"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    variant="outlined"
-                    onChange={techHandler}
-                />
-                <TextField
-                    id="outlined-full-width"
-                    label="Descr"
-                    style={{ margin: 8 }}
-                    placeholder="Type Here"
-                    fullWidth
-                    margin="normal"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    variant="outlined"
-                    onChange={descrHandler}
-                />
-                <TextField
-                    id="outlined-full-width"
-                    label="Password"
-                    style={{ margin: 8 }}
-                    placeholder="Type Here"
-                    fullWidth
-                    margin="normal"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    variant="outlined"
-                    onChange={passHandler}
-                />
-                <TextField
-                    id="outlined-full-width"
-                    label="Confirm Password"
-                    style={{ margin: 8 }}
-                    placeholder="Type Here"
-                    fullWidth
-                    margin="normal"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    variant="outlined"
-                    onChange={cpassHandler}
-                />
+                
 
                 <Link to={'/login'} >
                     <Button variant="contained" color="primary"

@@ -50,8 +50,7 @@ function MentorsList() {
     const [data, setData] = useState(true);
 
     useEffect(() => {
-        axios.get('/mentors/list').then((res) => {
-            console.log(res);
+        axios.get('http://localhost:3002/employee').then((res) => {
             setMenterlist(res.data.data);
             setData(false);
             setItemlength(res.data.data.length)
@@ -78,9 +77,9 @@ function MentorsList() {
                                 />
                                 <CardContent>
                                     <div className="moredetails">
-                                        <p>{item.mobilenumber}</p>
-                                        <p>{item.email} </p>
-                                        <p>{item.location} </p>
+                                        <p>{item.name}</p>
+                                        <p>{item.loc} </p>
+                                        <p>{item.descr} </p>
                                     </div>
                                     <Typography variant="body2" color="textSecondary" component="p">
                                         {item.descr}

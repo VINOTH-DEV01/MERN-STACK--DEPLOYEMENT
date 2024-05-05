@@ -8,6 +8,5 @@ const loginUser = require('../controller/login');
 router.get('/mentorLogin', loginUser.getData);
 router.get('/learnerLogin', loginUser.getData);
 
-
      
 module.exports = router;

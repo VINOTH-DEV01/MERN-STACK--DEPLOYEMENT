@@ -5,4 +5,4 @@ const productlistSchema = Mongoose.Schema({
   name: { type:String, require : true},
   price:  { type:Number, require : true }  
 });
-module.exports = Mongoose.model('ProductsList', productlistSchema)  
+module.exports = Mongoose.model('user', productlistSchema)  

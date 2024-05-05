@@ -1,35 +1,27 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose");        
 const RegisterDetails = require('../model/RegisterDetails');
 
 
 // Post controller // 
-exports.postData = (req, res, next) => {
+exports.postData = (req, res) => {
     console.log("inside the action!", req.body);
     const product = new RegisterDetails({
         _id: new mongoose.Types.ObjectId,
         fname: req.body.fname,
         lname: req.body.lname,
-        email: req.body.email,
-        mobilenumber: req.body.mobilenumber,
-        location: req.body.location,
-        typeofaccount:req.body.typeofaccount,
-        technologies: req.body.technologies,
-        descr: req.body.descr,
-        password: req.body.password,
-        cpassword: req.body.cpassword,
     });
-    console.log("product", product);
+    console.log("product - 111111", product);
     product.save().then((result) => {
         console.log("result inside the call! ", result);
         res.status(201).json({
             message: "your product is created succefully",
             data: result
         });
-        next();
+        // next();
     }).catch((err) => {
         res.status(400).json({
             message: "product is not created",
-            errro: err
+            error: err
         });
     });
 
